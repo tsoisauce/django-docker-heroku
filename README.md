@@ -1,6 +1,6 @@
 # Django Heroku Docker
 
-This is the ultimate full stack project using Heroku container build manifest to deploy. This is a generate template with Postgres, Celery, Redis, JWT.
+This is the ultimate full stack project using Heroku container build manifest to deploy. This is a generate template with Postgres, Celery, Redis.
 
 ## Workflow
 
@@ -180,3 +180,9 @@ curl --location --request GET 'localhost:8000/task/388b2b9e-d2d7-491c-93a5-ecc60
 
 - remember to check `ALLOWED_HOSTS` in settings to white list the correct domain
 - killing a port: `kill -9 $(lsof -t -i tcp:8000)`
+
+## TODO
+
+- GraphQL
+- REST Framework
+- JWT
