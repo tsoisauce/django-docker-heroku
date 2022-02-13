@@ -14,14 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from .views import ping, index, create_task, get_task_status
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
+    # sample endpoint
     path('ping/', ping, name='ping'),
+    # testing background task endpoints
     path('task', create_task, name='create_task'),
-    path('task/<str:task_id>', get_task_status, name='get_task_status')
+    path('task/<str:task_id>', get_task_status, name='get_task_status'),
+    # database health checks django-health-check
+    path('ht/', include('health_check.urls'), name='health_check'),
 ]

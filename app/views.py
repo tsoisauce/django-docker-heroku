@@ -10,8 +10,9 @@ def index(request):
     return render(request, 'index.html')
 
 def ping(request):
-    data = {'ping': 'pong!'}
-    return JsonResponse(data)
+    if request.method == 'GET':
+        data = {'ping': 'pong!'}
+        return JsonResponse(data)
 
 @csrf_exempt
 def create_task(request):
