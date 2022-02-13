@@ -2,6 +2,12 @@
 
 This is the ultimate full stack project using Heroku container build manifest to deploy. This is a generate template with Postgres, Celery, Redis, JWT.
 
+## Workflow
+
+- start Django web server: `python manage.py runserver_plus`
+- start Celery workers: `celery -A app worker -l INFO`
+- to access shell: `python manage.py shell_plus`
+
 ## Deploy on Heroku
 
 This template has a Dockerfile that is Django deployment ready using Heroku's container build manifest process. Each process in the Dockerfile is annotated to eplain each process. Migrations will be runned manually via Heroku docker container command line.
