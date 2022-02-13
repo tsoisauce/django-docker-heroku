@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django_app',
     # django-extensions
     'django_extensions',
+    # django-debug-toolbar
+    'debug_toolbar',
     # celery caching
     'django_celery_results',
     # django-health-checks
@@ -69,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'django_app.urls'
