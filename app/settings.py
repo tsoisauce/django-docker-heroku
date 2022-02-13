@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # installed apps
     'app',
+    # django-extensions
+    'django_extensions',
     # django-health-checks
     'health_check',                             # required
     'health_check.db',                          # stock Django health checkers
