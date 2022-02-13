@@ -1,5 +1,7 @@
 build:
   docker:
     web: Dockerfile
+    celery: Dockerfile
 run:
   web: gunicorn app.wsgi:application --bind 0.0.0.0:$PORT
+  celery: celery -A app worker -l INFO

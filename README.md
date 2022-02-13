@@ -122,6 +122,40 @@ heroku run python manage.py makemigrations -a morning-sierra-00895
 heroku run python manage.py migrate -a morning-sierra-00895
 ```
 
+## Celery
+
+This project also inludes Celery to manage cron jobs and background workers. It is configured to use Redis as a boker.
+
+Install redis and to start workers:
+
+```bash
+celery -A app worker -l INFO
+```
+
+### sample Celery task
+
+Thir project has a sample test task that sleeps for 3-seconds. This ban be triggered by the following requests:
+
+create task:
+
+```curl
+curl --location --request POST 'localhost:8000/task' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "type": "test"
+}'
+```
+
+get task status (sample task id 388b2b9e-d2d7-491c-93a5-ecc6034e555e):
+
+```curl
+curl --location --request GET 'localhost:8000/task/388b2b9e-d2d7-491c-93a5-ecc6034e555e' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "type": "test"
+}'
+```
+
 ## TIPS
 
 - remember to check `ALLOWED_HOSTS` in settings to white list the correct domain

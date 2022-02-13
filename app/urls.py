@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import ping
+from .views import ping, index, create_task, get_task_status
 
 urlpatterns = [
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('ping/', ping, name='ping'),
+    path('task', create_task, name='create_task'),
+    path('task/<str:task_id>', get_task_status, name='get_task_status')
 ]

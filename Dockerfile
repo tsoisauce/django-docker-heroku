@@ -37,4 +37,4 @@ USER myuser
 # RUN python manage.py migrate
 
 # run gunicorn
-CMD gunicorn spork.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn app.wsgi:application --bind 0.0.0.0:$PORT
