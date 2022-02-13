@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'app',
     # django-extensions
     'django_extensions',
+    # celery caching
+    'django_celery_results',
     # django-health-checks
     'health_check',                             # required
     'health_check.db',                          # stock Django health checkers
