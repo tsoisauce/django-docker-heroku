@@ -101,9 +101,9 @@ Deploy to Heroku master to build your image and deploy your container:
 git push heroku master
 ```
 
-### Add Postgres DB
+### Add Postgres DB and Redis
 
-Create the database:
+Create the Postgres database:
 
 ```bash
 heroku addons:create heroku-postgresql:hobby-dev -a morning-sierra-00895
@@ -121,6 +121,20 @@ Once the database is up, run the migrations:
 heroku run python manage.py makemigrations -a morning-sierra-00895
 heroku run python manage.py migrate -a morning-sierra-00895
 ```
+
+Create Redis:
+
+```bash
+heroku addons:create heroku-redis:hobby-dev -a morning-sierra-00895
+Creating heroku-redis:hobby-dev on ⬢ morning-sierra-00895... free
+Your add-on should be available in a few minutes.
+! WARNING: Data stored in hobby plans on Heroku Redis are not persisted.
+redis-crystalline-94825 is being created in the background. The app will restart when complete...
+Use heroku addons:info redis-crystalline-94825 to check creation progress
+Use heroku addons:docs heroku-redis to view documentation
+```
+
+Turn on dynos for both web and celery, this will require a payment plan.
 
 ## Celery
 
