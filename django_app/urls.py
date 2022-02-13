@@ -28,4 +28,6 @@ urlpatterns = [
     path('task/<str:task_id>', get_task_status, name='get_task_status'),
     # database health checks django-health-check
     path('ht/', include('health_check.urls'), name='health_check'),
+    # django-debug-toolbar
+    path('__debug__/', include('debug_toolbar.urls')),
 ]

@@ -33,6 +33,7 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'morning-sierra-00895.herokuapp.com']
 
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
