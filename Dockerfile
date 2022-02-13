@@ -5,8 +5,12 @@ FROM python:3.10.2-alpine
 WORKDIR /app
 
 # set environment variables
+
+# Prevents Python from writing pyc files to disc
 ENV PYTHONDONTWRITEBYTECODE 1
+# Prevents Python from buffering stdout and stderr
 ENV PYTHONUNBUFFERED 1
+# 1 is production, 0 is debug mode
 ENV DEBUG 0
 
 # install psycopg2
