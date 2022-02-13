@@ -4,6 +4,8 @@ This is the ultimate full stack project using Heroku container build manifest to
 
 ## Workflow
 
+- either use docker or virtual environment of your choice with Python 3.10.2
+- update/install dependencies `pip install -r requirements.txt`
 - start Django web server: `python manage.py runserver_plus`
 - start Celery workers: `celery -A app worker -l INFO`
 - to access shell: `python manage.py shell_plus`
