@@ -38,6 +38,8 @@ heroku run python manage.py migrate -a {{HEROKU_APP_NAME}}
 
 ## Deploying on Heroku
 
+### Deploy via container manifest
+
 Sign up for a Heroku acount and download their [CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
 create a new Heroku app. This will generate a new app and corresponding remotes. You will then push to this remote to deploy on Heroku master. In this example, the name of our application is:  `morning-sierra-00895`
@@ -90,6 +92,34 @@ Then, add the Heroku remote:
 
 ```bash
 heroku git:remote -a morning-sierra-00895
+set git remote heroku to https://git.heroku.com/morning-sierra-00895.git
+```
+
+Deploy to Heroku master to build your image and deploy your container:
+
+```bash
+git push heroku master
+```
+
+### Add Postgres DB
+
+Create the database:
+
+```bash
+heroku addons:create heroku-postgresql:hobby-dev -a morning-sierra-00895
+Creating heroku-postgresql:hobby-dev on ⬢ morning-sierra-00895... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-solid-97726 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+```
+
+Once the database is up, run the migrations:
+
+```bash
+heroku run python manage.py makemigrations -a morning-sierra-00895
+heroku run python manage.py migrate -a morning-sierra-00895
 ```
 
 ## TIPS
