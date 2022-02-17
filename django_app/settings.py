@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'morning-sierra-00895.herokuapp.com']
 
 INTERNAL_IPS = ['127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://morning-sierra-00895.herokuapp.com']
+
 # Application definition
 
 INSTALLED_APPS = [

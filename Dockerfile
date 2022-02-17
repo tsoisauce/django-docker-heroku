@@ -11,7 +11,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Prevents Python from buffering stdout and stderr
 ENV PYTHONUNBUFFERED 1
 # 0 is production, 1 is debug mode
-ENV DEBUG 1
+ENV DEBUG 0
 
 # install psycopg2
 RUN apk update \
