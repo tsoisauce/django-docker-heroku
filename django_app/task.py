@@ -5,7 +5,7 @@ from celery import shared_task
 logger = logging.getLogger(__name__)
 
 @shared_task(bind=True, serializer='json', retry_kwargs={'max_retries': 5, 'countdown': 60}, exponential_backoff=2)
-def test_task(self):
+def sample_task(self):
     """
     This is a test to simulate a task that takes a worker 3-seconds to complete
     """

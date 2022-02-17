@@ -149,7 +149,7 @@ This project also inludes Celery to manage cron jobs and background workers. It 
 Install redis and to start workers:
 
 ```bash
-celery -A app worker -l INFO
+celery -A django_app worker -l INFO
 ```
 
 ### sample Celery task

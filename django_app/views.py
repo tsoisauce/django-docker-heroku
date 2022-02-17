@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from celery.result import AsyncResult
 
-from .task import test_task
+from .task import sample_task
 
 def index(request):
     return render(request, 'index.html')
@@ -19,7 +19,7 @@ def create_task(request):
     if request.method == 'POST':
         payload = json.loads(request.body.decode('utf-8'))
         task_type = payload['type']
-        task = test_task.delay()
+        task = sample_task.delay()
         return JsonResponse({ "taskType": task_type, "taskId": task.id }, status=202)
 
 @csrf_exempt

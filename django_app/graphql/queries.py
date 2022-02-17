@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from celery.result import AsyncResult
 
 class UserQueries:
     def all_users():
@@ -6,3 +7,8 @@ class UserQueries:
 
     def get_user(email):
         return User.objects.get(email=email)
+
+class TaskQueries:
+    def get_task_status(id):
+        task_result = AsyncResult(id)
+        return task_result
