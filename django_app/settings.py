@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'health_check.contrib.redis',               # requires Redis broker
     # 'health_check.contrib.celery',              # requires celery
     'health_check.contrib.celery_ping',         # requires celery
+    # graphene-django
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -178,4 +180,9 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'django_cache',
     }
+}
+
+# graphene-django
+GRAPHENE = {
+    'SCHEMA': 'django_app.schema.schema'
 }

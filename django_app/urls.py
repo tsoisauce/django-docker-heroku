@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from graphene_django.views import GraphQLView
+
 from .views import ping, index, create_task, get_task_status
 
 urlpatterns = [
@@ -30,4 +32,6 @@ urlpatterns = [
     path('ht/', include('health_check.urls'), name='health_check'),
     # django-debug-toolbar
     path('__debug__/', include('debug_toolbar.urls')),
+    # graphene-django
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]

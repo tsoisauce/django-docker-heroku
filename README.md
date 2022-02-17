@@ -1,13 +1,13 @@
-# Django Heroku Docker
+# Django Docker Heroku
 
-This is the ultimate full stack project using Heroku container build manifest to deploy. This is a generate template with Postgres, Celery, Redis.
+This is the ultimate full stack project using Heroku container build manifest to deploy. This is a generate template with Postgres, Celery, Redis and GraphQL (Graphene).
 
 ## Workflow
 
 - either use docker or virtual environment of your choice with Python 3.10.2
 - update/install dependencies `pip install -r requirements.txt`
 - start Django web server: `python manage.py runserver_plus`
-- start Celery workers: `celery -A app worker -l INFO`
+- start Celery workers: `celery -A django_app worker -l INFO`
 - to access shell: `python manage.py shell_plus`
 
 ## Deploy on Heroku
@@ -183,6 +183,4 @@ curl --location --request GET 'localhost:8000/task/388b2b9e-d2d7-491c-93a5-ecc60
 
 ## TODO
 
-- GraphQL
-- REST Framework
 - JWT
