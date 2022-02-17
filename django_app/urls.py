@@ -34,5 +34,5 @@ urlpatterns = [
     # django-debug-toolbar
     path('__debug__/', include('debug_toolbar.urls')),
     # graphene-django
-    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ]

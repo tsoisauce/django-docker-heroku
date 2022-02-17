@@ -14,6 +14,7 @@ import os
 import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
+from datetime import timedelta
 
 # load .env file
 load_dotenv()
@@ -63,6 +64,8 @@ INSTALLED_APPS = [
     'health_check.contrib.celery_ping',         # requires celery
     # graphene-django
     'graphene_django',
+    # django-grapql-jwt
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'django_app.urls'
@@ -136,6 +140,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# authentication
+AUTHENTICATION_BACKENDS = [
+    "graphql_jwt.backends.JSONWebTokenBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -184,5 +193,20 @@ CACHES = {
 
 # graphene-django
 GRAPHENE = {
-    'SCHEMA': 'django_app.schema.schema'
+    'SCHEMA': 'django_app.graphql.schema.schema',
+    'MIDDLEWARE': [
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+    ],
+}
+
+# django-graphql-jwt
+GRAPHQL_JWT = {
+    # 'JWT_PAYLOAD_HANDLER': 'app.utils.jwt_payload',
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_LONG_RUNNING_REFRESH_TOKEN': True,
+    'JWT_EXPIRATION_DELTA': timedelta(minutes=5),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),    
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256',
 }
