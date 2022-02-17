@@ -130,7 +130,7 @@ heroku run python manage.py makemigrations -a morning-sierra-00895
 heroku run python manage.py migrate -a morning-sierra-00895
 ```
 
-#### Create Redis:
+#### Create Redis
 
 ```bash
 heroku addons:create heroku-redis:hobby-dev -a morning-sierra-00895
